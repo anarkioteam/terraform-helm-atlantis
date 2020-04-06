@@ -5,10 +5,7 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: ${ atlantis_ingress_class }
     kubernetes.io/tls-acme: "${ atlantis_ingress_tls_acme_enabled }"
-  hosts:
-    - host: ${ atlantis_host }
-      paths:
-        - "/"
+  host: ${ atlantis_host }
   tls:
     - secretName: ${ atlantis_ingress_tls_secret_name }
       hosts:
