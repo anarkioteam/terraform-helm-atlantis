@@ -4,17 +4,19 @@ A Terraform module for deploying [Atlantis](https://www.runatlantis.io/) via Hel
 
 ## Requirements
 
-| Name      | Version   |
-| --------- | --------- |
-| terraform | ~> 0.12.0 |
-| helm      | ~> 1.1    |
-| template  | ~> 2.1    |
+| Name       | Version   |
+| ---------- | --------- |
+| terraform  | ~> 0.12.0 |
+| helm       | ~> 1.1    |
+| kubernetes | ~> 1.11   |
+| template   | ~> 2.1    |
 
 ## Providers
 
-| Name | Version |
-| ---- | ------- |
-| helm | ~> 1.1  |
+| Name       | Version |
+| ---------- | ------- |
+| helm       | ~> 1.1  |
+| kubernetes | ~> 1.11 |
 
 ## Inputs
 
@@ -30,7 +32,7 @@ A Terraform module for deploying [Atlantis](https://www.runatlantis.io/) via Hel
 | atlantis_org_whitelist            | Github org whitelist (see Atlantis installation guide)         | `string` | n/a               |   yes    |
 | atlantis_webhook_secret           | GitHub webhook secret (see Atlantis installation guide)        | `string` | n/a               |   yes    |
 | helm_atlantis_chart_version       | Atlantis helm chart version to use                             | `string` | `""`              |    no    |
-| helm_atlantis_namespace           | Namespace to release Atlantis into                             | `string` | `"atlantis"`      |    no    |
+| kubernetes_atlantis_namespace     | Namespace to release Atlantis into                             | `string` | `"atlantis"`      |    no    |
 
 ## Outputs
 

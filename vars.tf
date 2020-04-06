@@ -1,4 +1,4 @@
-variable "helm_atlantis_namespace" {
+variable "kubernetes_atlantis_namespace" {
   description = "Namespace to release Atlantis into"
   type        = string
   default     = "atlantis"

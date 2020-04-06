@@ -1,8 +1,16 @@
+resource "kubernetes_namespace" "atlantis" {
+  metadata {
+    name = var.kubernetes_atlantis_namespace
+  }
+}
+
 resource "helm_release" "atlantis" {
+  depends_on = [kubernetes_namespace.atlantis]
+
   name       = "atlantis"
   repository = data.helm_repository.stable.metadata[0].name
   chart      = "atlantis"
-  namespace  = var.helm_atlantis_namespace
+  namespace  = var.kubernetes_atlantis_namespace
   version    = var.helm_atlantis_chart_version == "" ? null : var.helm_atlantis_chart_version
 
   values = [
