@@ -1,5 +1,9 @@
 orgWhitelist: ${ atlantis_org_whitelist }
 
+serviceAccount:
+  annotations:
+    eks.amazonaws.com/role-arn: ${ eks_iam_atlantis_role_arn }
+
 ingress:
   enabled: ${ atlantis_ingress_enabled }
   annotations:

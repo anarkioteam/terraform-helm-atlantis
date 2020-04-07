@@ -58,3 +58,8 @@ variable "atlantis_ingress_tls_secret_name" {
   type        = string
   default     = "atlantis-cert"
 }
+
+variable "eks_iam_atlantis_role_name" {
+  description = "IAM EKS service account role name for Atlantis"
+  type        = string
+}

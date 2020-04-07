@@ -24,6 +24,8 @@ resource "helm_release" "atlantis" {
         "atlantis_ingress_tls_acme_enabled" = var.atlantis_ingress_tls_acme_enabled
         "atlantis_ingress_class"            = var.atlantis_ingress_class
         "atlantis_ingress_tls_secret_name"  = var.atlantis_ingress_tls_secret_name
+
+        "eks_iam_atlantis_role_arn" = var.eks_iam_atlantis_role_arn
       }
     )
   ]

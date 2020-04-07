@@ -31,6 +31,7 @@ A Terraform module for deploying [Atlantis](https://www.runatlantis.io/) via Hel
 | atlantis_ingress_tls_secret_name  | Secret name for Atlantis TLS cert                              | `string` | `"atlantis-cert"` |    no    |
 | atlantis_org_whitelist            | Github org whitelist (see Atlantis installation guide)         | `string` | n/a               |   yes    |
 | atlantis_webhook_secret           | GitHub webhook secret (see Atlantis installation guide)        | `string` | n/a               |   yes    |
+| eks_iam_atlantis_role_name        | IAM EKS service account role name for Atlantis                 | `string` | n/a               |   yes    |
 | helm_atlantis_chart_version       | Atlantis helm chart version to use                             | `string` | `""`              |    no    |
 | kubernetes_atlantis_namespace     | Namespace to release Atlantis into                             | `string` | `"atlantis"`      |    no    |
 
