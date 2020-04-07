@@ -14,3 +14,42 @@ ingress:
     - secretName: ${ atlantis_ingress_tls_secret_name }
       hosts:
         - ${ atlantis_host }
+
+extraManifests:
+  - apiVersion: rbac.authorization.k8s.io/v1beta1
+    kind: ClusterRole
+    metadata:
+      name: '{{ template "atlantis.fullname" . }}'
+      labels:
+        app: '{{ template "atlantis.name" . }}'
+        chart: '{{ template "atlantis.chart" . }}'
+        release: '{{ .Release.Name }}'
+        heritage: '{{ .Release.Service }}'
+    rules:
+    - apiGroups:
+      - ""
+      resources:
+      - services
+      - pods
+      - nodes
+      verbs:
+      - get
+      - list
+      - watch
+  - apiVersion: rbac.authorization.k8s.io/v1beta1
+    kind: ClusterRoleBinding
+    metadata:
+      name: '{{ template "atlantis.fullname" . }}'
+      labels:
+        app: '{{ template "atlantis.name" . }}'
+        chart: '{{ template "atlantis.chart" . }}'
+        release: '{{ .Release.Name }}'
+        heritage: '{{ .Release.Service }}'
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: '{{ template "atlantis.fullname" . }}'
+    subjects:
+    - kind: ServiceAccount
+      name: '{{ template "atlantis.fullname" . }}'
+      namespace: '{{ .Release.Namespace }}'
